@@ -1,0 +1,41 @@
+/* Navbar Background and Text Color */
+.navbar {
+    background-color: #f8f9fa; /* Light background for navbar */
+  }
+  
+  /* Navbar Brand Styling */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  /* Navbar Links Styling */
+  .nav-link {
+    font-size: 1rem;
+    color: #343a40;
+    margin-right: 15px;
+  }
+  
+  /* Active Link Styling */
+  .nav-link.active {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* Search Box Styling */
+  .form-control {
+    width: 250px;
+  }
+  
+  /* Sign Up Button Styling */
+  .btn-primary {
+    margin-left: 15px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .form-control {
+      width: 150px;
+    }
+  }
+  

@@ -1,0 +1,40 @@
+<div class="container home-content">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <carousel [isAnimated]="true">
+            <slide>
+                <img src="../../../assets/skills/5.png" alt="First slide" class="d-block w-100 slide-img">
+            </slide>
+            <slide>
+                <img src="../../../assets/skills/1.png" alt="First slide" class="d-block w-100 slide-img">
+            </slide>
+            <slide>
+                <img src="../../../assets/skills/2.png" alt="First slide" class="d-block w-100 slide-img">
+            </slide>
+            <slide>
+                <img src="../../../assets/skills/3.png" alt="First slide" class="d-block w-100 slide-img">
+            </slide>
+            <slide>
+                <img src="../../../assets/skills/4.png" alt="First slide" class="d-block w-100 slide-img">
+            </slide>
+        </carousel>
+
+    </div>
+
+    <div class="text-content">
+        <h2>All the skills you need in one place</h2>
+        <h5><small>From critical skills to technical topics, SmartLearn by Karthik supports your professional
+                development.</small></h5>
+    </div>
+    <div class="trusted-section">
+        <h3>Trusted by over 3600+ individuals from YouTube and millions of learners around the world</h3>
+    </div>
+    <div class="cta-container">
+        <button class="cta-btn">Explore Courses</button>
+    </div>
+
+    <!-- This is where components are useful, we have another piece of html which we kept in plans and pricing page
+     we also show that here. in a different route we can show this component again without duplictaing it -->
+    <app-plans-and-pricing></app-plans-and-pricing>
+    
+</div>
