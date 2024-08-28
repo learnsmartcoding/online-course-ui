@@ -1,0 +1,33 @@
+<!-- src/app/category/category.component.html -->
+<div>
+    <div class="text-content">
+      <h2>All the Skills You Need in One Place</h2>
+      <h5><small>From critical skills to technical topics, SmartLearn by Karthik supports your professional development.</small></h5>
+    </div>
+  
+    <!-- Full-Width List View -->
+    <div *ngIf="viewType === 'list'" class="list-container">
+      <div *ngFor="let category of categories" class="list-item">
+        <div class="item-info">
+          <h5>{{ category.categoryName }}</h5>
+          <p>{{ category.description }}</p>
+        </div>
+        <a [routerLink]="['/course/category', category.categoryId]" class="btn btn-primary">Explore</a>
+      </div>
+    </div>
+  
+    <!-- Horizontal Tab View -->
+  <div *ngIf="viewType === 'tabs'" class="carousel-container">
+    <div *ngFor="let category of categories" class="card category-card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi bi-bookmark-fill me-2"></i>{{ category.categoryName }}
+        </h5>
+        <p class="card-text">{{ category.description }}</p>
+        <a [routerLink]="['/course/category', category.categoryId]" class="btn btn-primary">Explore</a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  

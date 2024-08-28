@@ -1,0 +1,21 @@
+<section *ngIf="claims">
+    <div class="container">
+      <h2>Claims</h2>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Claim</td>
+            <td>Value</td>
+            <td>Description</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of claims">
+            <td>{{c.claim}}</td>
+            <td>{{c.value}}</td>
+            <td>{{c.description}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
