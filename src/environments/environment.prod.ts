@@ -5,7 +5,7 @@
 import { EnvironmentConfiguration } from "../app/models/environment-configuration";
 
 
-const serverUrl='https://lsc-expensetracker-api.azurewebsites.net/api';
+const serverUrl='https://smartlearnbykarthik-api.azurewebsites.net/api';
 
 
 // The list of file replacements can be found in `angular.json`.
@@ -24,7 +24,7 @@ export const environment: EnvironmentConfiguration = {
       'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Read',
       'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Write'
     ],
-    apiEndpointUrl: 'https://lsc-expensetracker-api.azurewebsites.net/api'
+    apiEndpointUrl: 'https://smartlearnbykarthik-api.azurewebsites.net/api'
   },
   cacheTimeInMinutes: 30,
 };
