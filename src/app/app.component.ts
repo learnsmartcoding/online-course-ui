@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from "./components/home/home.component";
 import { NavBarComponent } from "./components/core/nav-bar/nav-bar.component";
+import { HomeComponent } from "./components/home/home.component";
+import { PlansAndPricingComponent } from "./components/plans-and-pricing/plans-and-pricing.component";
+import { ContactUsComponent } from "./components/core/contact-us/contact-us.component";
+import { AboutComponent } from "./components/core/about/about.component";
 
-//A class decorated with 'component' then it becomes a component for angular
-// it has these
 @Component({
-  selector: 'app-root',//this name is used as component selction
-  standalone: true, //this is new to angular 16+, if yes, then no ngmodule is used
-  imports: [RouterOutlet, HomeComponent, NavBarComponent], // because we choose yes above, import is done on component level. wher eother module si imported
-  templateUrl: './app.component.html', //this is the place we point where html is placed for this component
-  styleUrl: './app.component.css'// same as html, we point where is css is placed
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, NavBarComponent, HomeComponent, PlansAndPricingComponent, ContactUsComponent, AboutComponent],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'online-course-ui'; // just a variable in compoennt and we will see more on these
+  title = 'online-course';
 }

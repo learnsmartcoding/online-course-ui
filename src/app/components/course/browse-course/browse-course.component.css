@@ -1,0 +1,110 @@
+/* General Styles */
+.courses-page {
+    margin-top:20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #343a40;
+  }
+  
+  .page-header p {
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
+  
+  /* Course List Styles */
+  .course-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .course-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .course-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .course-content {
+    padding: 20px;
+  }
+  
+  .course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .course-header h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #343a40;
+  }
+  
+  .course-header .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 15px;
+  }
+  
+  .course-details {
+    margin-bottom: 15px;
+  }
+  
+  .course-details span {
+    display: block;
+    font-size: 0.875rem;
+    color: #343a40;
+    margin-bottom: 5px;
+  }
+  
+  .course-details .rating {
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+  }
+  

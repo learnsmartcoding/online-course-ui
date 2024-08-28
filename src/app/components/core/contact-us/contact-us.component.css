@@ -1,0 +1,82 @@
+.contact-us-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.contact-us-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.contact-subtitle {
+    font-size: 1.2rem;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+.contact-form .form-label {
+    font-weight: bold;
+}
+
+.contact-form .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+.contact-details {
+    text-align: left;
+    padding: 20px;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.contact-info p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.social-media {
+    margin-top: 30px;
+}
+
+.social-media h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: #555;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}

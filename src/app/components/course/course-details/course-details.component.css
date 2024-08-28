@@ -1,0 +1,94 @@
+.course-details {
+    padding: 20px;
+    background-color: #f0f4f7;
+  }
+  
+  .course-header {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .course-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .price-amount {
+    font-weight: bold;
+  }
+  
+  .course-type {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+  }
+  
+  .course-info .card {
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .info-section p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .sessions .session-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .sessions .session-item h3 {
+    font-size: 1.25rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004080;
+  }
+  
+  .reviews .review-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .close {
+    font-size: 1.5rem;
+  }
+  
+  iframe {
+    border: none;
+    border-radius: 8px;
+  }
+  
+  

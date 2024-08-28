@@ -1,0 +1,30 @@
+<div class="courses-page">
+    <div class="page-header">
+      <h1>Explore Our Courses</h1>
+      <p>Discover a variety of courses tailored to boost your skills and knowledge.</p>
+    </div>
+  
+    <div class="course-list">
+      <div *ngFor="let course of courses" class="course-card">
+        <div class="course-image">
+          <!-- Placeholder for course image -->
+          <img src="https://via.placeholder.com/400x250" alt="{{ course.title }}">
+        </div>
+        <div class="course-content">
+          <div class="course-header">
+            <h2>{{ course.title }}</h2>
+            <p class="price">{{ formatPrice(course.price) }}</p>
+          </div>
+          <p class="description">{{ course.description }}</p>
+          <div class="course-details">
+            <span class="duration">Duration: {{ course.duration }} hours</span>
+            <span class="course-type">Type: {{ course.courseType }}</span>
+            <span class="seats">Seats Available: {{ course.seatsAvailable || 'N/A' }}</span>
+            <span class="rating">Rating: {{ course.userRating.averageRating }} ({{ course.userRating.totalRating }} reviews)</span>
+          </div>
+          <a [routerLink]="['/course/session-details', course.courseId]" class="btn btn-primary">Enroll Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

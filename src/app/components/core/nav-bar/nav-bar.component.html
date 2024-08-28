@@ -20,19 +20,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link active" aria-current="page"  [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
               </li>
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="#">Category</a>
+            <a class="nav-link " [routerLink]="['/course/category']" routerLinkActive="router-link-active"  aria-current="page">Category</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link"  [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >Contact Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="router-link-active" >About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Plans & Pricing</a>
+            <a class="nav-link" [routerLink]="['/plans-and-price']" routerLinkActive="router-link-active" >Plans & Pricing</a>
           </li>
         </ul>
   

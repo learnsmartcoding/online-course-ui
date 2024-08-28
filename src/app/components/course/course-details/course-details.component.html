@@ -1,0 +1,95 @@
+<div *ngIf="courseDetails" class="course-details container">
+    <!-- Course Header -->
+    <div class="course-header card mb-4">
+      <div class="card-body">
+        <h1 class="card-title">{{ courseDetails.title }}</h1>
+        <p class="price">Price: <span class="price-amount">${{ courseDetails.price.toFixed(2) }}</span></p>
+        <p class="course-type">Course Type: {{ courseDetails.courseType }}</p>
+      </div>
+    </div>
+  
+    <!-- Course Information -->
+    <div class="course-info row mb-4">
+      <div class="col-md-6">
+        <div class="info-section card">
+          <div class="card-body">
+            <h2 class="section-title">Description</h2>
+            <p>{{ courseDetails.description }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info-section card">
+          <div class="card-body">
+            <h2 class="section-title">Category</h2>
+            <p><strong>{{ courseDetails.category.categoryName }}</strong></p>
+            <p>{{ courseDetails.category.description }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info-section card">
+          <div class="card-body">
+            <h2 class="section-title">Course Details</h2>
+            <p><strong>Duration:</strong> {{ courseDetails.duration }} hours</p>
+            <p><strong>Seats Available:</strong> {{ courseDetails.seatsAvailable || 'Unlimited' }}</p>
+            <p><strong>Start Date:</strong> {{ courseDetails.startDate | date }}</p>
+            <p><strong>End Date:</strong> {{ courseDetails.endDate | date }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="info-section card">
+          <div class="card-body">
+            <h2 class="section-title">User Rating</h2>
+            <p>Average Rating: <strong>{{ courseDetails.userRating.averageRating }}</strong> ({{ courseDetails.userRating.totalRating }} ratings)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Sessions -->
+    <div class="sessions card mb-4">
+      <div class="card-body">
+        <h2 class="section-title">Sessions</h2>
+        <ul class="list-unstyled">
+          <li *ngFor="let session of courseDetails.sessionDetails" class="session-item">
+            <h3>{{ session.title }}</h3>
+            <p>{{ session.description }}</p>
+            <button (click)="openVideo(session.videoUrl)" class="btn btn-primary">Watch Video</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Reviews -->
+    <div class="reviews card mb-4">
+      <div class="card-body">
+        <h2 class="section-title">Reviews</h2>
+        <div *ngFor="let review of courseDetails.reviews" class="review-item">
+          <h4>{{ review.userName }}</h4>
+          <p>Rating: {{ review.rating }}/5</p>
+          <p>{{ review.comments }}</p>
+          <p>Date: {{ review.reviewDate | date }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Video Modal -->
+    <div *ngIf="videoUrl" class="modal fade show d-block" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Watch Video</h5>
+              <button type="button" class="close" aria-label="Close" (click)="closeVideo()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <iframe [src]="videoUrl | safe: 'resourceUrl'" width="100%" height="400px" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
