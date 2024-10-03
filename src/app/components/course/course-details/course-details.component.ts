@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MOCK_COURSE_DETAILS } from '../../../mock-data/mock-course-details';
 import { SafePipe } from '../../../pipes/safe.pipe';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-course-details',
@@ -16,16 +17,28 @@ import { SafePipe } from '../../../pipes/safe.pipe';
 export class CourseDetailsComponent implements OnInit {
   courseDetails: CourseDetails | null = null;
   videoUrl: string | null = null;
+  courseId:number=0;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+    private courseService: CourseService,) {}
 
   ngOnInit(): void {
-    const courseId = Number(this.route.snapshot.paramMap.get('courseId'));
-    // Mock data for now
-    this.courseDetails = MOCK_COURSE_DETAILS;
-    // Fetch real data from service based on courseId in production
+    this.courseId = Number(this.route.snapshot.paramMap.get('courseId'));
+    this.getCourseDetails();
   }
 
+  getCourseDetails(){
+    this.courseService.getCourseDetails(this.courseId).subscribe((data) => {
+      this.courseDetails = data;
+      this.courseDetails.description = this.courseDetails.description.replace(
+        /\n/g,
+        '<br>'
+      );
+      this.courseDetails.sessionDetails.forEach((s) => {
+        s.description = s.description.replace(/\n/g, '<br>');
+      });
+    });
+  }
   openVideo(videoUrl: string): void {
     const videoId = this.extractVideoId(videoUrl);
     this.videoUrl = `https://www.youtube.com/embed/${videoId}`;

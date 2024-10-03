@@ -10,7 +10,8 @@ import { BrowseCourseComponent } from "../course/browse-course/browse-course.com
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule, PlansAndPricingComponent, CommonModule, CategoryComponent, DataBindingComponent, BrowseCourseComponent],
+  imports: [CarouselModule, PlansAndPricingComponent, CommonModule,
+     CategoryComponent, DataBindingComponent, BrowseCourseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
