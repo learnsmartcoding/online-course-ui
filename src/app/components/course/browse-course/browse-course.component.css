@@ -1,8 +1,9 @@
 /* General Styles */
 .courses-page {
-    margin-top:20px;
+    margin: 20px auto; /* Center the content */
     padding: 20px;
     background-color: #f8f9fa;
+    max-width: 1200px; /* Limit the maximum width */
   }
   
   .page-header {
@@ -35,6 +36,8 @@
     background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Stack image on top and content below */
   }
   
   .course-card:hover {
@@ -42,14 +45,24 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
+  .course-image {
+    height: 200px; /* Set a fixed height for the image container */
+    overflow: hidden;
+    position: relative;
+  }
+  
   .course-image img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* Fill the container */
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   
   .course-content {
     padding: 20px;
+    flex-grow: 1; /* Allow content to grow */
   }
   
   .course-header {
@@ -106,5 +119,27 @@
     background-color: #0056b3;
     border-color: #0056b3;
     transform: scale(1.05);
+  }
+  .no-courses-message {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    color: #721c24;
+  }
+  
+  .course-content {
+    padding: 20px;
+    flex-grow: 1;
+    min-height: 300px; /* Set a minimum height for consistent card size */
+  }
+  
+  .description {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ensure text gets truncated if too long */
+    max-height: 50px; /* Adjust this value based on the design */
   }
   

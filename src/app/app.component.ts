@@ -9,7 +9,8 @@ import { AboutComponent } from "./components/core/about/about.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavBarComponent, HomeComponent, PlansAndPricingComponent, ContactUsComponent, AboutComponent],
+  imports: [RouterOutlet, NavBarComponent, 
+    HomeComponent, PlansAndPricingComponent, ContactUsComponent, AboutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

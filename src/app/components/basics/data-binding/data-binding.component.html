@@ -1,0 +1,57 @@
+<div class="container">
+    <h1>Angular Binding Concepts</h1>
+  
+    <!-- Interpolation Examples -->
+    <div class="example-section">
+      <h2>Interpolation</h2>
+      <p><strong>Full Name:</strong> {{firstName}} {{lastName}} </p>
+      <p><strong>Total Items:</strong> {{itemCount}} </p>
+      <p><strong>Total Price:</strong> {{price * quantity}}</p>
+    </div>
+  
+    <!-- Property Binding Examples -->
+    <div class="example-section">
+      <h2>Property Binding</h2>
+      <button [disabled]="isDisabled" class="btn">Disabled Button</button>
+      <br><br>
+      <img [src]="imageUrl"  alt="Sample Image" class="img">
+      <br><br>
+      <div [class.active]="isActive" class="status-box">
+        Status: Active
+      </div>
+    </div>
+  
+    <!-- Event Binding Examples -->
+    <div class="example-section">
+      <h2>Event Binding</h2>
+      <button (click)="handleClick()" class="btn">Click Me</button>
+      <p>{{ clickMessage }}</p>
+  
+      <input (input)="onInput($event)" placeholder="Type something" class="input">
+      <p>You typed: {{ inputMessage }}</p>
+  
+      <div (mouseover)="onMouseOver()"  (mouseleave)="onMouseLeave()" class="hover-box">
+        Hover over me!
+      </div>
+      <p>{{ message }}</p>
+    </div>
+  
+    <!-- Two-Way Binding Examples -->
+    <div class="example-section">
+      <h2>Two-Way Data Binding</h2>
+      <input [(ngModel)]="username" placeholder="Enter your name" class="input">
+      <p>Hello, {{ username }}!</p>
+  
+      <label>
+        <input  [(ngModel)]="isChecked" type="checkbox"> Check me
+      </label>
+      <p>Checkbox is {{ isChecked ? 'checked' : 'not checked' }}</p>
+  
+      <select [(ngModel)]="selectedOption" class="dropdown">
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+      </select>
+      <p>Selected Option: {{ selectedOption }}</p>
+    </div>
+  </div>
+  

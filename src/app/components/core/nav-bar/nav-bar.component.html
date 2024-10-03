@@ -1,62 +1,65 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <!-- Brand/Logo -->
-      <a class="navbar-brand" href="#">SmartLearn by Karthik</a>
-  
-      <!-- Toggler for responsive design -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <!-- Navbar Links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page"  [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
-              </li>
-          <li class="nav-item">
-            <a class="nav-link " [routerLink]="['/course/category']" routerLinkActive="router-link-active"  aria-current="page">Category</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  [routerLink]="['/contact-us']" routerLinkActive="router-link-active" >Contact Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="router-link-active" >About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/plans-and-price']" routerLinkActive="router-link-active" >Plans & Pricing</a>
-          </li>
-        </ul>
-  
-        <!-- Search Box -->
-        <form class="d-flex">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search courses"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-  
-        <!-- Right-side Links -->
-        <ul class="navbar-nav ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-primary" href="#">Sign Up</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container-fluid">
+    <!-- Brand/Logo -->
+    <a class="navbar-brand" href="#">SmartLearn by Karthik</a>
+
+    <!-- Toggler for responsive design -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/course/category']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link " [routerLink]="['/examples/data-binding']" routerLinkActive="router-link-active"
+            aria-current="page">Data Bindings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/examples/directives']" routerLinkActive="router-link-active"
+            aria-current="page">Directives</a>
+        </li>
+        <!-- About and Contact -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="active">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="active">Contact Us</a>
+        </li>
+
+        <!-- Pricing -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/plans-and-price']" routerLinkActive="active">Plans &
+            Pricing</a>
+        </li>
+      </ul>
+
+      <!-- Search Box -->
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- Right-side Links -->
+      <ul class="navbar-nav ms-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-primary" href="#">Sign Up</a>
+        </li>
+      </ul>
     </div>
-  </nav>
-  
+  </div>
+</nav>

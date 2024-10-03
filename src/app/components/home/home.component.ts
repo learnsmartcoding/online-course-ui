@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { CarouselComponent, CarouselModule } from 'ngx-bootstrap/carousel';
 import { PlansAndPricingComponent } from '../plans-and-pricing/plans-and-pricing.component';
 import { CommonModule } from '@angular/common';
-import { CategoryComponent } from "../course/category/category.component";
+import { AppComponent } from '../../app.component';
+import { CategoryComponent } from '../course/category/category.component';
+import { DataBindingComponent } from "../basics/data-binding/data-binding.component";
+import { BrowseCourseComponent } from "../course/browse-course/browse-course.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule, PlansAndPricingComponent, CommonModule, CategoryComponent],
+  imports: [CarouselModule, PlansAndPricingComponent, CommonModule, CategoryComponent, DataBindingComponent, BrowseCourseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

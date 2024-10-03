@@ -7,6 +7,13 @@
   
     <!-- Full-Width List View -->
     <div *ngIf="viewType === 'list'" class="list-container">
+      <div  class="list-item">
+        <div class="item-info">
+          <h5>All Courses</h5>
+          <p>Take a look at various courses available to enroll, learn and succeed career.</p>
+        </div>
+        <a [routerLink]="['/course/browse']" class="btn btn-primary">Explore</a>
+      </div>
       <div *ngFor="let category of categories" class="list-item">
         <div class="item-info">
           <h5>{{ category.categoryName }}</h5>
@@ -18,6 +25,15 @@
   
     <!-- Horizontal Tab View -->
   <div *ngIf="viewType === 'tabs'" class="carousel-container">
+    <div  class="card category-card">
+      <div class="card-body">
+        <h5 class="card-title">
+          <i class="bi bi-bookmark-fill me-2"></i>All Courses
+        </h5>
+        <p class="card-text">Take a look at various courses available to enroll, learn and succeed career.</p>
+        <a [routerLink]="['/course/browse']" class="btn btn-primary">Explore</a>
+      </div>
+    </div>
     <div *ngFor="let category of categories" class="card category-card">
       <div class="card-body">
         <h5 class="card-title">

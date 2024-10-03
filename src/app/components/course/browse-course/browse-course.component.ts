@@ -1,27 +1,43 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { MOCK_COURSES } from '../../../mock-data/mock-courses';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Course } from '../../../models/course';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { MOCK_COURSES } from '../../../mock-data/mock-courses';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-browse-course',
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './browse-course.component.html',
-  styleUrl: './browse-course.component.css'
+  styleUrl: './browse-course.component.css',
 })
 export class BrowseCourseComponent implements OnInit, OnChanges {
-  
   courses: Course[] = [];
   @Input() categoryId: number = 0;
-
-  ngOnInit(): void {    
-    //this.courses = MOCK_COURSES.filter(f=>f.categoryId===this.categoryId);
+  constructor() {
+    this.courses = MOCK_COURSES;
   }
+
+  processCourse() {
+    this.getCourseByCategory(this.categoryId);
+  }
+
+  getCourseByCategory(categoryId: number) {
+    this.courses = MOCK_COURSES.filter((f) => f.categoryId == categoryId);
+  }
+
+  ngOnInit(): void {
+    this.processCourse();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
-    this.courses = MOCK_COURSES.filter(f=>f.categoryId===this.categoryId);
+    this.processCourse();
   }
 
   formatPrice(price: number): string {

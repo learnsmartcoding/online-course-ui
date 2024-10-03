@@ -1,30 +1,40 @@
 <div class="courses-page">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a [routerLink]="['/course/category']" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Back to categories
+        </a>
+    </div>
+
     <div class="page-header">
-      <h1>Explore Our Courses</h1>
-      <p>Discover a variety of courses tailored to boost your skills and knowledge.</p>
+        <h1>Explore Our Courses</h1>
+        <p>Discover a variety of courses tailored to boost your skills and knowledge.</p>
     </div>
-  
-    <div class="course-list">
-      <div *ngFor="let course of courses" class="course-card">
-        <div class="course-image">
-          <!-- Placeholder for course image -->
-          <img src="https://via.placeholder.com/400x250" alt="{{ course.title }}">
-        </div>
-        <div class="course-content">
-          <div class="course-header">
-            <h2>{{ course.title }}</h2>
-            <p class="price">{{ formatPrice(course.price) }}</p>
-          </div>
-          <p class="description">{{ course.description }}</p>
-          <div class="course-details">
-            <span class="duration">Duration: {{ course.duration }} hours</span>
-            <span class="course-type">Type: {{ course.courseType }}</span>
-            <span class="seats">Seats Available: {{ course.seatsAvailable || 'N/A' }}</span>
-            <span class="rating">Rating: {{ course.userRating.averageRating }} ({{ course.userRating.totalRating }} reviews)</span>
-          </div>
-          <a [routerLink]="['/course/session-details', course.courseId]" class="btn btn-primary">Enroll Now</a>
-        </div>
-      </div>
+
+    <div *ngIf="courses.length === 0" class="no-courses-message text-center">
+        <h2>No Courses Available</h2>
+        <p>We currently do not have any courses in this category. Please check back later!</p>
     </div>
-  </div>
-  
+
+    <div *ngIf="courses.length > 0" class="course-list">
+        <div *ngFor="let course of courses" class="course-card">
+            <div class="course-image">
+                <img [src]="course.thumbnail" alt="{{ course.title }}">
+            </div>
+            <div class="course-content">
+                <div class="course-header">
+                    <h2>{{ course.title }}</h2>
+                    <p class="price">{{ formatPrice(course.price) }}</p>
+                </div>
+                <p class="description">{{ course.description }}</p>           
+                <div class="course-details">
+                    <span class="duration">Duration: {{ course.duration }} hours</span>
+                    <span class="course-type">Type: {{ course.courseType }}</span>
+                    <span class="seats">Seats Available: {{ course.seatsAvailable || 'N/A' }}</span>
+                    <span class="rating">Rating: {{ course.userRating?.averageRating }} ({{
+                        course.userRating?.totalRating }} reviews)</span>
+                </div>
+                <a [routerLink]="['/course/session-details', course.courseId]" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
