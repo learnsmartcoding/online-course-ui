@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseDetails } from '../../../models/course';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MOCK_COURSE_DETAILS } from '../../../mock-data/mock-course-details';
 import { SafePipe } from '../../../pipes/safe.pipe';
 import { CourseService } from '../../../services/course.service';
 

@@ -6,32 +6,24 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Course } from '../../../models/course';
-import { MOCK_COURSES } from '../../../mock-data/mock-courses';
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { CourseService } from '../../../services/course.service';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @Component({
   selector: 'app-browse-course',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterModule, FormsModule, CommonModule, PopoverModule],
   templateUrl: './browse-course.component.html',
-  styleUrl: './browse-course.component.css',
+  styleUrls: ['./browse-course.component.css'], // Fix typo: styleUrl to styleUrls
 })
 export class BrowseCourseComponent implements OnInit, OnChanges {
+  constructor(private courseService: CourseService) {}
   courses: Course[] = [];
   @Input() categoryId: number = 0;
-  constructor(private courseService: CourseService) {}
-
-  processCourse() {
-    this.getCourseByCategory(this.categoryId);
-  }
-
-  getCourseByCategory(categoryId: number) {
-    this.courseService.getCoursesByCategoryId(categoryId).subscribe((data) => {
-      this.courses = data;
-    });
-  }
+  @Input() browseAllCourse: boolean = false;
 
   ngOnInit(): void {
     this.processCourse();
@@ -41,7 +33,26 @@ export class BrowseCourseComponent implements OnInit, OnChanges {
     this.processCourse();
   }
 
+  processCourse() {
+    if (this.browseAllCourse) {
+      this.getCourses();
+    } else {
+      this.getCourseByCategory(this.categoryId);
+    }
+  }
   formatPrice(price: number): string {
     return `$${price.toFixed(2)}`;
+  }
+
+  getCourseByCategory(categoryId: number) {
+    this.courseService.getCoursesByCategoryId(categoryId).subscribe((data) => {
+      this.courses = data;
+    });
+  }
+
+  getCourses() {
+    this.courseService.getAllCourses().subscribe((data) => {
+      this.courses = data;
+    });
   }
 }

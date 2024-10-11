@@ -1,0 +1,11 @@
+.table {
+    margin-top: 20px;
+    thead {
+      background-color: #343a40;
+      color: white;
+    }
+    button {
+      margin-right: 10px;
+    }
+  }
+  

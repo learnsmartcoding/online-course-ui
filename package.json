@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-prod": "ng build --configuration=production --output-hashing=all",
+    "build-staging": "ng build --configuration=stage --output-hashing=all",
+    "build-qa": "ng build --configuration=qa --output-hashing=all"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +26,9 @@
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.14.10",
+    "@azure/msal-angular": "^3.0.16",
+    "@azure/msal-browser": "^3.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.0",

@@ -25,7 +25,14 @@
                     <h2>{{ course.title }}</h2>
                     <p class="price">{{ formatPrice(course.price) }}</p>
                 </div>
-                <p class="description">{{ course.description }}</p>           
+                <!-- <p class="description">{{ course.description }}</p> -->
+                <p class="description"
+                [popover]="course.description"
+                [popoverTitle]="course.title"
+                triggers="hover"
+                container="body">
+                {{ course.description }}{{ course.description.length > 150 ? '...' : '' }}
+             </p>
                 <div class="course-details">
                     <span class="duration">Duration: {{ course.duration }} hours</span>
                     <span class="course-type">Type: {{ course.courseType }}</span>

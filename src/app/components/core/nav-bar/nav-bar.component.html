@@ -17,19 +17,70 @@
           <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/course/category']" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">Categories</a>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Examples
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/examples/data-binding']"
+                routerLinkActive="active">Data Bindings</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/examples/directives']" routerLinkActive="active">Directives</a>
+          
+            </li>
+          </ul>
         </li>
-        
-        <li class="nav-item">
-          <a class="nav-link " [routerLink]="['/examples/data-binding']" routerLinkActive="router-link-active"
-            aria-current="page">Data Bindings</a>
+
+        <!-- Courses Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Courses
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/course/enrollments']"
+                routerLinkActive="active">Enrollments</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/course/browse']" routerLinkActive="active">All Courses</a>
+            <li><a class="dropdown-item" [routerLink]="['/course/category']" routerLinkActive="active">Categories</a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/examples/directives']" routerLinkActive="router-link-active"
-            aria-current="page">Directives</a>
+        <!-- Update Profile -->
+        <li class="nav-item" *ngIf="loginDisplay">
+          <a class="nav-link" [routerLink]="['/user/update-profile']" routerLinkActive="router-link-active">Update
+            Profile</a>
         </li>
+        <!-- Requests Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Requests
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/technology/request/video']" routerLinkActive="active">Request
+                a Video</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/technology/requests']" routerLinkActive="active">My
+                Requests</a></li>
+          </ul>
+        </li>
+
+        <!-- Admin Dropdown -->
+        <li class="nav-item dropdown" *ngIf="loginDisplay">
+          <a class="nav-link dropdown-toggle" id="adminDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/course/list']" routerLinkActive="active">List
+                Courses</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/course/create']" routerLinkActive="active">Create
+                Course</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/technology/requests']" routerLinkActive="active">Video
+                Requests</a></li>
+          </ul>
+        </li>
+
         <!-- About and Contact -->
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="active">About</a>
@@ -46,18 +97,34 @@
       </ul>
 
       <!-- Search Box -->
-      <form class="d-flex">
+      <form class="d-flex me-3">
         <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 
-      <!-- Right-side Links -->
-      <ul class="navbar-nav ms-3">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-primary" href="#">Sign Up</a>
+      <!-- Login/Logout -->
+      <ul class="navbar-nav">
+        <li class="nav-item d-flex align-items-center">
+           <!-- Profile Picture -->
+           <img
+           *ngIf="profilePictureUrl; else defaultAvatar"
+           [src]="profilePictureUrl"
+           alt="Profile Picture"
+           class="rounded-circle"
+           style="width: 40px; height: 40px; object-fit: cover;"
+         />
+
+         <!-- Default Avatar -->
+         <ng-template #defaultAvatar>
+           <img
+             src="../../../../assets/images/default-avatar.png"
+             alt="Default Avatar"
+             class="rounded-circle"
+             style="width: 40px; height: 40px; object-fit: cover;"
+           />
+         </ng-template>
+          <a class="nav-link" *ngIf="!loginDisplay" (click)="loginRedirect()">Login</a>
+          <a class="nav-link" *ngIf="loginDisplay" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

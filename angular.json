@@ -22,17 +22,30 @@
               "src/favicon.ico",
               "src/assets",
               {
+                "glob": "web.config",
+                "input": "src",
+                "output": "/"
+              },
+              {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css",
-            "node_modules/ngx-toastr/toastr.css",
-            "node_modules/ngx-spinner/animations/ball-scale-multiple.css"],
+            "styles": [
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -83,7 +96,11 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
+            ],
             "scripts": []
           }
         }

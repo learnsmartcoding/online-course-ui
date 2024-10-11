@@ -1,5 +1,8 @@
 <app-nav-bar></app-nav-bar>
 <div class="container">
-  <router-outlet />
+  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+  @if (!isIframe) {
+  <router-outlet></router-outlet>
+  }
   <ngx-spinner></ngx-spinner>
 </div>

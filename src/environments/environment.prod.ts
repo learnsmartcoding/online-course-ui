@@ -5,7 +5,7 @@
 import { EnvironmentConfiguration } from "../app/models/environment-configuration";
 
 
-const serverUrl='https://lsc-expensetracker-api.azurewebsites.net/api';
+const serverUrl='https://smartlearnbykarthik-api.azurewebsites.net/api';
 
 
 // The list of file replacements can be found in `angular.json`.
@@ -17,14 +17,14 @@ export const environment: EnvironmentConfiguration = {
     userProfile:'user-profiles'
   },
   adb2cConfig: {
-    clientId: '2b9d74de-7aad-402c-b912-b653574516ee',
-    readScopeUrl: 'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Read',
-    writeScopeUrl: 'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Write',
+    clientId: '41883d3b-2145-4abe-ab65-e2bee701d162',
+    readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Read',
+    writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write',
     scopeUrls:[
-      'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Read',
-      'https://karthiktechworld.onmicrosoft.com/expensetracker/api/Expense.Write'
+      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write',
+      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/prod/api/User.Write'
     ],
-    apiEndpointUrl: 'https://lsc-expensetracker-api.azurewebsites.net/api'
+    apiEndpointUrl: 'https://smartlearnbykarthik-api.azurewebsites.net/api'
   },
   cacheTimeInMinutes: 30,
 };

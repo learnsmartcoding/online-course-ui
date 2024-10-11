@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg border-0" style="border-radius: 15px; overflow: hidden;">
+          <!-- Gradient Header -->
+          <div class="card-header text-white" style="background: linear-gradient(135deg, #2a2a72, #009ffd);">
+            <h3 class="text-center mb-0">{{user.firstName}}'s Profile (Founder & CEO)</h3>
+          </div>
+          <div class="card-body p-5">
+            <div class="row">
+              <!-- Profile Picture -->
+              <div class="col-md-4 text-center mb-3">
+                <img
+                  [src]="user.profilePictureUrl"
+                  class="img-fluid rounded-circle shadow-sm"
+                  alt="Profile Picture"
+                  style="width: 160px; height: 160px; object-fit: cover;"
+                />
+              </div>
+              <!-- User Info -->
+              <div class="col-md-8">
+                <h2 class="text-dark">{{ user.displayName }}</h2>
+                <p class="text-muted mb-1"><strong>Full Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+                <p class="text-muted mb-1"><strong>Email:</strong> {{ user.email }}</p>
+               
+                <p class="text-muted" [innerHTML]=" user.bio"><strong>Bio:</strong></p>
+              </div>
+            </div>
+            <!-- Role Information -->
+            <!-- <div *ngIf="user.userRoleModel.length > 0" class="mt-4">
+              <h5 class="text-dark">Roles</h5>
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let role of user.userRoleModel" class="list-group-item border-0">
+                  <i class="fas fa-user-tag"></i> {{ role.roleName }}
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="user.userRoleModel.length == 0" class="mt-3 text-muted">
+              <p>No roles assigned.</p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

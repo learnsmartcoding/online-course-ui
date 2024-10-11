@@ -17,7 +17,6 @@ export interface Course {
   duration: number; // Duration in hours
   categoryId: number;
   instructorId: number;
-  instructorUserId: number;
   startDate: string | null;
   endDate: string | null;
   category?: CourseCategory;

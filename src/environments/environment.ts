@@ -17,12 +17,12 @@ export const environment: EnvironmentConfiguration = {
     userProfile:'user-profiles'
   },
   adb2cConfig: {
-    clientId: 'f9d96116-bd30-4770-b15a-f199417bc3cf',
-    readScopeUrl: 'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Read',
-    writeScopeUrl: 'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Write',
+    clientId: '5212f2c7-60a9-46ad-bcbb-3f5dc9af3dab',
+    readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
+    writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write',
     scopeUrls:[
-      'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Read',
-      'https://karthiktechworld.onmicrosoft.com/dev/expensetracker/api/Expense.Write'
+      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
+      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write'
     ],
     apiEndpointUrl: 'https://localhost:7005/api'
   },

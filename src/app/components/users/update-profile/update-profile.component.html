@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header">
+        <h3 class="card-title">Update Profile</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4">
+            <label for="bio">Bio:</label>
+            <textarea
+              formControlName="bio"
+              id="bio"
+              rows="4"
+              class="form-control"
+              placeholder="Write something about yourself..."
+              [disabled]="!isInstructor"
+            ></textarea>
+          </div>
+  
+          <div class="form-group mb-4">
+            <label for="profilePicture">Profile Picture:</label>
+            <input
+              type="file"
+              id="profilePicture"
+              class="form-control"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+  
+          <div *ngIf="previewUrl" class="mb-4 text-center">
+            <img
+              [src]="previewUrl"
+              alt="Profile Picture Preview"
+              class="img-thumbnail"
+              width="150"
+              height="150"
+            />
+          </div>
+  
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            [disabled]="profileForm.invalid"
+          >
+            Update Profile
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
