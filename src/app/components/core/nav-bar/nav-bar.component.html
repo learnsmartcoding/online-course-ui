@@ -12,58 +12,119 @@
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Home -->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/home']"
-            routerLinkActive="router-link-active">Home</a>
+          <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Examples
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/examples/data-binding']"
+                routerLinkActive="active">Data Bindings</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/examples/directives']" routerLinkActive="active">Directives</a>
+          
+            </li>
+          </ul>
+        </li>
+
+        <!-- Courses Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Courses
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/course/enrollments']"
+                routerLinkActive="active">Enrollments</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/course/browse']" routerLinkActive="active">All Courses</a>
+            <li><a class="dropdown-item" [routerLink]="['/course/category']" routerLinkActive="active">Categories</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Update Profile -->
+        <li class="nav-item" *ngIf="loginDisplay">
+          <a class="nav-link" [routerLink]="['/user/update-profile']" routerLinkActive="router-link-active">Update
+            Profile</a>
+        </li>
+        <!-- Requests Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Requests
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/technology/request/video']" routerLinkActive="active">Request
+                a Video</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/technology/requests']" routerLinkActive="active">My
+                Requests</a></li>
+          </ul>
+        </li>
+
+        <!-- Admin Dropdown -->
+        <li class="nav-item dropdown" *ngIf="loginDisplay">
+          <a class="nav-link dropdown-toggle" id="adminDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/course/list']" routerLinkActive="active">List
+                Courses</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/course/create']" routerLinkActive="active">Create
+                Course</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/admin/technology/requests']" routerLinkActive="active">Video
+                Requests</a></li>
+          </ul>
+        </li>
+
+        <!-- About and Contact -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="active">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " [routerLink]="['/course/category']" routerLinkActive="router-link-active"
-            aria-current="page">Category</a>
+          <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="active">Contact Us</a>
         </li>
+
+        <!-- Pricing -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/contact-us']" routerLinkActive="router-link-active">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="router-link-active">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/plans-and-price']" routerLinkActive="router-link-active">Plans &
+          <a class="nav-link" [routerLink]="['/plans-and-price']" routerLinkActive="active">Plans &
             Pricing</a>
         </li>
       </ul>
 
       <!-- Search Box -->
-      <form class="d-flex">
+      <form class="d-flex me-3">
         <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
 
-      <!-- Right-side Links -->
-      <ul class="navbar-nav ms-3">
-        <li class="nav-item">
-          @if (loginDisplay) {
+      <!-- Login/Logout -->
+      <ul class="navbar-nav">
+        <li class="nav-item d-flex align-items-center">
+           <!-- Profile Picture -->
+           <img
+           *ngIf="profilePictureUrl; else defaultAvatar"
+           [src]="profilePictureUrl"
+           alt="Profile Picture"
+           class="rounded-circle"
+           style="width: 40px; height: 40px; object-fit: cover;"
+         />
 
-          <a class="nav-link" [routerLink]="['/claims']" routerLinkActive="router-link-active">Claims</a>
-          }
-        </li>
-        <li class="nav-item">
-          @if (!loginDisplay) {
-          <!-- Login using Popup -->
-          <!-- <a class="nav-link" (click)="loginPopup()">Login</a> -->
-
-          <!-- Login using Redirect -->
-          <a class="nav-link" (click)="loginRedirect()">Login</a>
-          }
-
-          @if (loginDisplay) {
-
-          <a class="nav-link" [routerLink]="['/claims']" routerLinkActive="router-link-active">Claims</a>
-          <!-- Logout using Popup -->
-          <!-- <a class="nav-link" (click)="logout(true)">Logout</a> -->
-          <!-- Logout using Redirect -->
-          <a class="nav-link" (click)="logout()">Logout</a>
-
-          }
+         <!-- Default Avatar -->
+         <ng-template #defaultAvatar>
+           <img
+             src="../../../../assets/images/default-avatar.png"
+             alt="Default Avatar"
+             class="rounded-circle"
+             style="width: 40px; height: 40px; object-fit: cover;"
+           />
+         </ng-template>
+          <a class="nav-link" *ngIf="!loginDisplay" (click)="loginRedirect()">Login</a>
+          <a class="nav-link" *ngIf="loginDisplay" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

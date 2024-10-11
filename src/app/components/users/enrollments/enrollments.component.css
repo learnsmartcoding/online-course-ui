@@ -1,0 +1,52 @@
+.table {
+    font-size: 1rem;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  
+  .table th {
+    background-color: #343a40;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .table td {
+    padding: 12px;
+    vertical-align: middle;
+  }
+  
+  .table tbody tr {
+    transition: background-color 0.3s ease;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .badge {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    border-radius: 12px;
+  }
+  
+  .badge-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .badge-warning {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn {
+    font-size: 0.875rem;
+    padding: 5px 12px;
+    border-radius: 5px;
+  }
+  

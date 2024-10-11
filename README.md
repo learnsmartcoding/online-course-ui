@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+## Project Requirements
+
+### Requirement 1 | Episode 6
+Build the following screens while backend team is building the supporting Web APIs.
+- Build a page that shows the category details. Preferable to show as Cards in Horizon view, scrollable.
+- On click of a particular category, take the user to the cours list page where you shows the courses belongs to that category. 
+    - Show course meta data with its attractive picture. 
+    - Auto align the courses 3 per row and fill in as many course comes in.
+- On view of the course, take the user to the course detail page and show some basic information about the course. We will build more on this page later.
+- Update the navigation section to support view by all courses, category.
+- No need any user to get authenticated for these pages.

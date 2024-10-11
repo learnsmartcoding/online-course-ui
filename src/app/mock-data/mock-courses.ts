@@ -6,6 +6,7 @@ export const MOCK_COURSES: Course[] = [
     title: 'Angular Full Course',
     description:
       'Comprehensive course covering Angular from basics to advanced topics.',
+      
     price: 199.99,
     courseType: 'Online',
     seatsAvailable: 50,

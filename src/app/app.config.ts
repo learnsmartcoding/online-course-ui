@@ -39,6 +39,10 @@ import {
   ProtectedResourceScopes,
 } from '@azure/msal-angular';
 import { environment } from '../environments/environment';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -125,6 +129,52 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     },
   ]);
 
+  protectedResourceMap.set(`${environment.adb2cConfig.apiEndpointUrl}/videorequest`, [
+    {
+      httpMethod: 'GET',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'POST',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'PUT',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'DELETE',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'PATCH',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+  ]);
+
+  protectedResourceMap.set(`${environment.adb2cConfig.apiEndpointUrl}/enrollment`, [
+    {
+      httpMethod: 'GET',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'POST',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'PUT',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'DELETE',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+    {
+      httpMethod: 'PATCH',
+      scopes: [...environment.adb2cConfig.scopeUrls]
+    },
+  ]);
+
   return {
     interactionType: InteractionType.Redirect,
     protectedResourceMap,
@@ -145,12 +195,16 @@ export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
       CarouselModule.forRoot(),
+      AccordionModule.forRoot(),
+      RatingModule.forRoot(),
+      ModalModule.forRoot(),
+      PopoverModule.forRoot(),
       SafePipe,
       BrowserModule,
       BrowserAnimationsModule,
       ToastrModule.forRoot({
-        timeOut: 5000,
-        positionClass: 'toast-top-left',
+        timeOut: 3000,
+        positionClass: 'toast-top-right',
         preventDuplicates: true,
       }),
       NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })

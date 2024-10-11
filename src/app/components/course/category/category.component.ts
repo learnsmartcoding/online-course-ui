@@ -18,21 +18,11 @@ export class CategoryComponent implements OnInit {
   @Input() categories: CourseCategory[] = [];
   @Input() viewType: 'tabs' | 'list' = 'list';
 
-  selectedCategory: CourseCategory | null = null;
-
   constructor(private categoryService:CategoryService) {}
 
   ngOnInit(): void {
     //this.categories = MOCK_COURSE_CATEGORIES;
     this.getCategories();
-    // Default to the first category if viewType is 'tabs'
-    if (this.viewType === 'tabs' && this.categories.length > 0) {
-      this.selectCategory(this.categories[0]);
-    }
-  }
-
-  selectCategory(category: CourseCategory): void {
-    this.selectedCategory = category;
   }
 
   getCategories(){

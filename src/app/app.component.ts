@@ -6,6 +6,7 @@ import { PlansAndPricingComponent } from './components/plans-and-pricing/plans-a
 import { ContactUsComponent } from './components/core/contact-us/contact-us.component';
 import { AboutComponent } from './components/core/about/about.component';
 import { NgxSpinnerComponent } from 'ngx-spinner';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +26,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   title = 'online-course';
   isIframe = false;
+  constructor() {}
 
   ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener; // Remove this line to use Angular Universal

@@ -21,7 +21,7 @@ export const environment: EnvironmentConfiguration = {
     readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
     writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write',
     scopeUrls:[
-      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write',
+      'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
       'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write'
     ],
     apiEndpointUrl: 'https://localhost:7005/api'

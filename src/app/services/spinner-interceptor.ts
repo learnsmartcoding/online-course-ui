@@ -17,12 +17,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          this.toastr.success('Request successful');
+          //this.toastr.success('Request successful');
         }
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        this.toastr.error(`Request failed: ${error.message}`);
+        //this.toastr.error(`Request failed: ${error.message}`);
         return throwError(error);
       }),
       finalize(() => {        

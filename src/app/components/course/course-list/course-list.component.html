@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">All Courses</h2>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>#</th>
+        <th>Course Name</th>
+        <th>Category</th>
+        <th>Thumbnail</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.category?.categoryName }}</td>
+        <td>
+          <img
+            *ngIf="course.thumbnail"
+            [src]="course.thumbnail"
+            alt="Thumbnail"
+            width="100"
+            height="100"
+          />
+        </td>
+        <td>
+          <button class="btn btn-info btn-sm mr-2" (click)="viewCourse(course.courseId)">View</button>
+          <button class="btn btn-warning btn-sm mr-2" (click)="editCourse(course.courseId)">Edit</button>
+          <button class="btn btn-danger btn-sm mr-2" (click)="deleteCourse(course.courseId)">Delete</button>
+          <button class="btn btn-primary btn-sm" (click)="openModal(course.courseId, uploadTemplate)">Upload Thumbnail</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ngx-bootstrap Modal for File Upload -->
+  <ng-template #uploadTemplate>
+    <div class="modal-header">
+      <h5 class="modal-title">Upload Thumbnail</h5>
+      <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      <br><br>
+
+      <!-- Image Preview -->
+      <div *ngIf="previewUrl" class="text-center">
+        <img [src]="previewUrl" alt="Image Preview" width="200" height="200" class="img-thumbnail" />
+        <p *ngIf="selectedFile">{{ selectedFile.name }}</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="uploadThumbnail()">Upload</button>
+      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    </div>
+  </ng-template>
+</div>

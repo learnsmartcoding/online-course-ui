@@ -5,30 +5,46 @@ import { Claim } from '../../../models/claim';
 import { MsalModule, MSAL_GUARD_CONFIG, MsalGuardConfiguration, MsalService, MsalBroadcastService } from '@azure/msal-angular';
 import { EventMessage,EventType, InteractionStatus, RedirectRequest, PopupRequest, AuthenticationResult } from '@azure/msal-browser';
 import { LoginService } from '../../../services/login.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { UserProfileService } from '../../../services/user-profile.service';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterModule, MsalModule],
+  imports: [RouterModule, MsalModule, CommonModule, FormsModule],
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   isIframe = false;
   loginDisplay = false;
+  isAdmin = false;
   private readonly _destroying$ = new Subject<void>();
   claims: Claim[] = [];
-
+  profilePictureUrl = '';
   
   constructor(
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private userService:UserProfileService
   ) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.getUserInfo();
+    }, 2000);
+
+    this.loginService.claims$.subscribe(s=>{
+      const roles = s.filter(f=>f.claim==='extension_userRoles');
+      if(roles.length && !this.isAdmin){
+        this.isAdmin = roles[0].value.split(',').filter((f) => f === 'Admin').length > 0
+      }      
+    });
+    
     this.authService.handleRedirectObservable().subscribe((result: AuthenticationResult) => {
       if (result) {
         const redirectStartPage = localStorage.getItem('redirectStartPage'); // Retrieve the URL from local storage
@@ -79,8 +95,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
       });
   }
 
+  getUserInfo() {
+    this.userService.getUserProfile(this.loginService.userId).subscribe(s=>{
+      this.profilePictureUrl = s.profilePictureUrl?s.profilePictureUrl:'';
+    });
+  }
+
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+   
   }
 
   checkAndSetActiveAccount() {

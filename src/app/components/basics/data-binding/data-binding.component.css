@@ -1,0 +1,94 @@
+/* General Styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1, h2 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .example-section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  /* Button Styling */
+  .btn {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn[disabled] {
+    background-color: #d3d3d3;
+  }
+  
+  /* Input Styling */
+  .input {
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .dropdown {
+    padding: 8px;
+    width: 100%;
+    max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Image Styling */
+  .img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  /* Active Box Styling */
+  .status-box {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .status-box.active {
+    border-color: green;
+    background-color: #e7ffe7;
+    color: green;
+  }
+  
+  /* Hover Box */
+  .hover-box {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .hover-box:hover {
+    background-color: #d1ecf1;
+  }
+  

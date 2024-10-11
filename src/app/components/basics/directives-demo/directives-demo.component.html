@@ -1,0 +1,78 @@
+<div class="demo-container">
+    <h1 class="title">Angular Directives Demo</h1>
+
+    <!-- Structural Directives Section -->
+    <div class="section">
+        <h2 class="section-title">Structural Directives</h2>
+
+        <!-- *ngIf Example -->
+        <div class="example-card">
+            <h3>*ngIf Example</h3>
+            <button (click)="showContent = !showContent" class="btn btn-primary">
+                {{ showContent ? 'Hide' : 'Show' }} Content
+            </button>
+            <div *ngIf="showContent"  class="card-content">
+                <p class="content-text">This content is conditionally shown based on *ngIf!</p>
+            </div>
+        </div>
+
+        <!-- *ngFor Example -->
+        <div class="example-card">
+            <h3>*ngFor Example</h3>
+            <ul class="item-list">
+                <li *ngFor="let item of items" class="list-item">
+                    {{ item }}
+                </li>
+               
+            </ul>
+        </div>
+
+        <!-- *ngSwitch Example -->
+        <div class="example-card">
+            <h3>*ngSwitch Example</h3>
+            <label>Select a color:</label>
+            <select [(ngModel)]="selectedColor" class="color-selector">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+            <div [ngSwitch]="selectedColor" class="switch-container">
+                <p *ngSwitchCase="'red'" class="color-red">You selected Red!</p>
+                <p *ngSwitchCase="'green'" class="color-green">You selected Green!</p>
+                <p *ngSwitchCase="'blue'" class="color-blue">You selected Blue!</p>
+                <p *ngSwitchDefault>Select a color</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Attribute Directives Section -->
+    <div class="section">
+        <h2 class="section-title">Attribute Directives</h2>
+
+        <!-- ngClass Example -->
+        <div class="example-card">
+            <h3>ngClass Example</h3>
+            <button (click)="isActive = !isActive" class="btn btn-primary">Toggle Active</button>
+            <p  [ngClass]="{'active': isActive, 'inactive': !isActive}" class="toggle-text">
+                This text is {{ isActive ? 'Active' : 'Inactive' }}.
+            </p>
+        </div>
+
+        <!-- ngStyle Example -->
+        <div class="example-card">
+            <h3>ngStyle Example</h3>
+            <button (click)="isHighlighted = !isHighlighted" class="btn btn-primary">Toggle Highlight</button>
+            <p [ngStyle]="{'background-color': isHighlighted ? 'yellow' : 'transparent'}" class="highlight-text">
+                This text is {{ isHighlighted ? 'highlighted' : 'normal' }}.
+            </p>
+        </div>
+        <br>
+        <div class="example-card">
+            <h3 appHighlight>Custom Directives</h3>
+            <p appHighlight>
+                Hover over this text to see the background color change!
+            </p>
+        </div>
+
+    </div>
+</div>
