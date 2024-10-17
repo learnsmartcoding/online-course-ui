@@ -1,0 +1,101 @@
+.container {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2.text-primary {
+    font-weight: bold;
+    margin-bottom: 20px;
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+  }
+  
+  h2.text-primary:hover {
+    transform: translateY(0);
+  }
+  
+  .custom-accordion-heading {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-accordion-heading h5 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  
+  .badge-topic {
+    background-color: #007bff;
+    color: white;
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .badge-subtopic {
+    background-color: #28a745;
+    color: white;
+    font-size: 0.85rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+  }
+  
+  .status-badge.requested {
+    background-color: #ffc107;
+    color: #212529;
+  }
+  
+  .status-badge.reviewed {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .status-badge.inprocess {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .status-badge.completed {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .status-badge.published {
+    background-color: #6f42c1;
+    color: white;
+  }
+  
+  .accordion-group .card-body {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+  
+  .btn-outline-secondary {
+    border-color: #6c757d;
+    color: #6c757d;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+  }
+  

@@ -1,3 +1,4 @@
+
 <div class="container contact-us-container">
     <h2>Contact Us</h2>
     <p class="contact-subtitle">We'd love to hear from you! Reach out to us using the form below or through any of our contact methods.</p>
@@ -5,24 +6,38 @@
     <div class="row">
         <!-- Contact Form -->
         <div class="col-lg-6">
-            <form class="contact-form">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
                 <div class="mb-3">
                     <label for="name" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter your name">
+                    <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.touched || contactForm.get('name')?.dirty)" class="text-danger">
+                        <small *ngIf="contactForm.get('name')?.errors?.['required']">Name is required.</small>
+                    </div>
                 </div>
+                
                 <div class="mb-3">
                     <label for="email" class="form-label">Your Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter your email">
+                    <div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)" class="text-danger">
+                        <small *ngIf="contactForm.get('email')?.errors?.['required']">Email is required.</small>
+                        <small *ngIf="contactForm.get('email')?.errors?.['email']">Invalid email format.</small>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="subject" class="form-label">Subject</label>
-                    <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+                    <input type="text" formControlName="subject" class="form-control" id="subject" placeholder="Enter subject">
+                    <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.touched || contactForm.get('subject')?.dirty)" class="text-danger">
+                        <small *ngIf="contactForm.get('subject')?.errors?.['required']">Subject is required.</small>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                    <textarea formControlName="message" class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                    <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.touched || contactForm.get('message')?.dirty)" class="text-danger">
+                        <small *ngIf="contactForm.get('message')?.errors?.['required']">Message is required.</small>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Send Message</button>
             </form>
         </div>
 
@@ -31,11 +46,11 @@
             <div class="contact-details">
                 <div class="contact-info">
                     <h4>Address</h4>
-                    <p>123 Main Street, City, Country</p>
+                    <p>Contact by email</p>
                 </div>
                 <div class="contact-info">
                     <h4>Phone</h4>
-                    <p>+1 234 567 890</p>
+                    <p>+1 234 567 890 <small>(some random number)</small></p>
                 </div>
                 <div class="contact-info">
                     <h4>Email</h4>
@@ -43,12 +58,15 @@
                 </div>
                 <div class="social-media">
                     <h4>Follow Us</h4>
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@learnsmartcoding" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/lsc_karthik" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/learnsmartcoding/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/learnsmartcoding/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/learnsmartcoding" class="social-icon"><i class="fab fa-github"></i></a>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
+

@@ -17,6 +17,7 @@ export const environment: EnvironmentConfiguration = {
     userProfile:'user-profiles'
   },
   adb2cConfig: {
+    chatHubUrl: 'https://localhost:7005/chathub', // Correct URL
     clientId: '5212f2c7-60a9-46ad-bcbb-3f5dc9af3dab',
     readScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Read',
     writeScopeUrl: 'https://smartlearnbykarthik.onmicrosoft.com/smartlearnbykarthik/dev/api/User.Write',

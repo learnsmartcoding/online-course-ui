@@ -6,6 +6,7 @@ export interface EnvironmentConfiguration {
         userProfile: string;      
     },
     adb2cConfig: {
+        chatHubUrl: string;
         clientId: string;
         readScopeUrl: string;
         scopeUrls:string[];

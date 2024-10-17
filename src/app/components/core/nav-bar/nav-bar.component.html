@@ -18,20 +18,6 @@
             [routerLinkActiveOptions]="{ exact: true }">Home</a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Examples
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
-            <li><a class="dropdown-item" [routerLink]="['/examples/data-binding']"
-                routerLinkActive="active">Data Bindings</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/examples/directives']" routerLinkActive="active">Directives</a>
-          
-            </li>
-          </ul>
-        </li>
-
         <!-- Courses Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="coursesDropdown" role="button" data-bs-toggle="dropdown"
@@ -51,6 +37,7 @@
           <a class="nav-link" [routerLink]="['/user/update-profile']" routerLinkActive="router-link-active">Update
             Profile</a>
         </li>
+        
         <!-- Requests Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="requestsDropdown" role="button" data-bs-toggle="dropdown"

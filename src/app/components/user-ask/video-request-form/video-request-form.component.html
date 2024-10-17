@@ -1,0 +1,114 @@
+<div class="container mt-5">
+  <div class="card shadow-sm" style="transform: translateY(10px); background-color: #f9f9f9;">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">Request a Video</h4>
+      <a class="btn btn-outline-light float-end" [routerLink]="['/technology/requests']"
+        routerLinkActive="router-link-active">View All Requests</a>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <!-- Name Input -->
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter your name"
+              [ngClass]="{ 'is-invalid': requestForm.get('name')?.invalid && requestForm.get('name')?.touched }" />
+            <div *ngIf="requestForm.get('name')?.invalid && requestForm.get('name')?.touched" class="invalid-feedback">
+              Name is required.
+            </div>
+          </div>
+          <!-- Status Input -->
+          <div class="col-md-6 mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" class="form-select" formControlName="requestStatus">
+              <option value="Requested">Requested</option>
+              <option value="Reviewed">Reviewed</option>
+              <option value="Pending Clarification">Pending Clarification</option>
+              <option value="InProcess">In Process</option>
+              <option value="Completed">Completed</option>
+              <option value="Published">Published</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <!-- Topic Input -->
+          <div class="col-md-6 mb-3">
+            <label for="topic" class="form-label">Topic</label>
+            <select id="topic" class="form-select" formControlName="topic" (change)="onTopicChange($event)"
+              [ngClass]="{ 'is-invalid': requestForm.get('topic')?.invalid && requestForm.get('topic')?.touched }">
+              <option value="" disabled>Select a topic</option>
+              <option *ngFor="let topic of topics" [value]="topic">{{ topic }}</option>
+            </select>
+            <div *ngIf="requestForm.get('topic')?.invalid && requestForm.get('topic')?.touched"
+              class="invalid-feedback">
+              Topic is required.
+            </div>
+          </div>
+          <!-- Subtopic Input -->
+          <div class="col-md-6 mb-3">
+            <label for="subTopic" class="form-label">Subtopic</label>
+            <select id="subTopic" class="form-select" formControlName="subTopic" [disabled]="!subTopics.length">
+              <option value="" disabled>Select a subtopic</option>
+              <option *ngFor="let subTopic of subTopics" [value]="subTopic">{{ subTopic }}</option>
+            </select>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+          <!-- Short Title Input -->
+          <div class="col-md-12 mb-3">
+            <label for="shortTitle" class="form-label">Short Title</label>
+            <input type="text" id="shortTitle" class="form-control" formControlName="shortTitle"
+              placeholder="Enter a short title for the video request"
+              [ngClass]="{ 'is-invalid': requestForm.get('shortTitle')?.invalid && requestForm.get('shortTitle')?.touched }" />
+            <div *ngIf="requestForm.get('shortTitle')?.invalid && requestForm.get('shortTitle')?.touched"
+              class="invalid-feedback">
+              Short title is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Description Input -->
+          <div class="col-md-12 mb-3">
+            <label for="requestDescription" class="form-label">Description</label>
+            <textarea id="requestDescription" class="form-control" formControlName="requestDescription" rows="4"
+              placeholder="Describe the video request in detail"
+              [ngClass]="{ 'is-invalid': requestForm.get('requestDescription')?.invalid && requestForm.get('requestDescription')?.touched }"></textarea>
+            <div
+              *ngIf="requestForm.get('requestDescription')?.invalid && requestForm.get('requestDescription')?.touched"
+              class="invalid-feedback">
+              Description is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Response Input -->
+          <div class="col-md-12 mb-3">
+            <label for="response" class="form-label">Response</label>
+            <textarea id="response" class="form-control" formControlName="response" rows="2"
+              placeholder="Response will be provided later"></textarea>
+          </div>
+        </div>
+        <div class="row" *ngIf="isEditMode">
+          <!-- Response Input -->
+          <div class="col-md-12 mb-3">
+            <label for="videoUrls" class="form-label">Video URLs</label>
+            <textarea id="videoUrls" class="form-control" formControlName="videoUrls" rows="2"
+              placeholder="Response will be provided later"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-end">
+            <button type="submit" class="btn btn-primary" [disabled]="requestForm.invalid">Submit Request</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
