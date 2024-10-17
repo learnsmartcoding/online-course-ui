@@ -1,82 +1,79 @@
 .contact-us-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.contact-us-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: bold;
+    margin-top: 40px;
+    background: #f8f9fa; /* Light background for better contrast */
+    padding: 40px;
+    border-radius: 8px;
 }
 
 .contact-subtitle {
-    font-size: 1.2rem;
-    color: #777;
-    margin-bottom: 40px;
+    font-size: 1.25rem;
+    color: #343a40; /* Dark text for better readability */
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .contact-form .form-label {
     font-weight: bold;
+    color: #495057; /* Darker label color */
 }
 
 .contact-form .form-control {
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
 }
 
-.contact-form button {
+.contact-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
     background-color: #007bff;
-    color: #fff;
+    border-color: #007bff;
+    padding: 12px 20px;
     border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-.contact-form button:hover {
+.btn-primary:hover {
     background-color: #0056b3;
+    border-color: #0056b3;
 }
 
 .contact-details {
-    text-align: left;
-    padding: 20px;
+    background-color: #ffffff; /* White background for contact details */
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
 .contact-info {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .contact-info h4 {
-    font-size: 1.5rem;
     font-weight: bold;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    color: #555;
+    color: #343a40; /* Dark header color */
 }
 
 .social-media {
-    margin-top: 30px;
-}
-
-.social-media h4 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .social-icon {
-    font-size: 1.5rem;
-    color: #555;
     margin-right: 15px;
-    transition: color 0.3s ease;
+    font-size: 26px;
+    color: #007bff;
+    transition: color 0.3s;
 }
 
 .social-icon:hover {
-    color: #007bff;
+    color: #0056b3;
 }
