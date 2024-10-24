@@ -37,7 +37,9 @@
           <a class="nav-link" [routerLink]="['/user/update-profile']" routerLinkActive="router-link-active">Update
             Profile</a>
         </li>
-        
+        <li class="nav-item" *ngIf="loginDisplay">
+          <a class="nav-link" [routerLink]="['/user/chat']" routerLinkActive="router-link-active">Chat</a>
+        </li>
         <!-- Requests Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="requestsDropdown" role="button" data-bs-toggle="dropdown"

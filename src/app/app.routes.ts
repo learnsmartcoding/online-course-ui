@@ -18,6 +18,7 @@ import { EnrollmentsComponent } from './components/users/enrollments/enrollments
 import { UpdateProfileComponent } from './components/users/update-profile/update-profile.component';
 import { ViewUserProfileComponent } from './components/users/view-user-profile/view-user-profile.component';
 import { BrowseComponent } from './components/course/browse/browse.component';
+import { ChatComponent } from './components/chat/chat/chat.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -67,5 +68,10 @@ export const routes: Routes = [
   { path: 'course/enrollments', component: EnrollmentsComponent },
   { path: 'user/update-profile', component: UpdateProfileComponent },
   { path: 'user/instructors', component: ViewUserProfileComponent },
+  {
+    path: 'user/chat',
+    component: ChatComponent,
+    canActivate: [canActivateGuard],
+  },
   { path: '**', redirectTo: 'home' },
 ];
