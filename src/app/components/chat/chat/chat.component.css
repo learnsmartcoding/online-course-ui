@@ -1,0 +1,237 @@
+/* Chat Container */
+.chat-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Panel: Users List & Chat Queue */
+.users-panel {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  max-width: 300px;
+}
+
+.panel-header h3, .panel-header h4 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 8px;
+}
+
+.user-list, .queue-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.user-item, .queue-item {
+  padding: 10px;
+  background-color: #f1f3f5;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.connect-btn {
+  padding: 5px 10px;
+}
+
+/* Right Panel: Chat Window */
+.chat-panel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  min-width: 400px;
+}
+
+.chat-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.chat-status {
+  margin-bottom: 15px;
+}
+
+.status-message {
+  background-color: #e2e6ea;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  max-height: 250px;
+}
+
+.message-bubble {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Message Input and Buttons */
+.message-input {
+  display: flex;
+  gap: 10px;
+}
+
+.message-input input {
+  flex: 1;
+  height: 45px;
+  border-radius: 5px;
+}
+
+.message-input .send-btn, .message-input .end-btn {
+  width: 100px;
+  height: 45px;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.action-btn {
+  margin-bottom: 15px;
+}
+
+.btn {
+  font-size: 1rem;
+}
+
+.send-btn {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.end-btn {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.connect-btn:hover, .send-btn:hover, .end-btn:hover {
+  transform: scale(1.05);
+  transition: all 0.2s ease-in-out;
+}
+
+
+.about-us-container {
+  background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+  color: #fff;
+  padding: 50px 20px;
+  border-radius: 10px;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #e2e2e2;
+}
+
+.mission-section, .vision-section, .history-section {
+  margin-top: 40px;
+}
+
+.mission-section h3, .vision-section h3, .history-section h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #f1c40f;
+}
+
+.mission-section p, .vision-section p, .history-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.mission-img, .vision-img {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-section {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.team-section h3 {
+  font-size: 2rem;
+  color: #f1c40f;
+}
+
+.team-member {
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.team-img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-member h5 {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  color: #f1c40f;
+}
+
+.team-member p {
+  color: #e2e2e2;
+}
+
+.history-section {
+  margin-top: 60px;
+}
+
+.history-section h3 {
+  color: #f1c40f;
+}
+
+.history-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e2e2e2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mission-img, .vision-img {
+      margin-bottom: 20px;
+  }
+}

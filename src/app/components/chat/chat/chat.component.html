@@ -1,0 +1,103 @@
+<br>
+<div class="chat-container">
+  <!-- Left Column: Connected Users & Chat Queue -->
+  <div class="users-panel">
+
+    <div class="panel-header">
+      <h3>User Action</h3>
+      @if(!isAdmin)
+      {
+      <button class="btn btn-primary btn-sm action-btn" (click)="joinChatQueue()">Join Chat Queue</button>
+      }
+      @else
+      {
+      <button class="btn btn-primary btn-sm action-btn" (click)="registerAdmin()">Register as Admin</button>
+      }
+    </div>
+    <div class="panel-header">
+      <h3>Connected Users</h3>
+    </div>
+    <ul class="user-list">
+      <!-- Loop through connected users -->
+      <li class="user-item" *ngFor="let user of connectedUsers$ | async">
+        <span>{{ user.displayName }} {{ user.isAdmin ? ' - Admin' : '' }}</span>
+      </li>
+    </ul>
+
+    <div class="panel-header">
+      <h4>Chat Queue</h4>
+    </div>
+    <ul class="queue-list">
+      <!-- Loop through users in chat queue -->
+      <li class="queue-item" *ngFor="let queuedUser of chatQueue$ | async">
+        <span>{{ queuedUser.displayName }}</span>
+        <button *ngIf="isAdminConnected$ | async" (click)="connectWithUser(queuedUser.connectionId)"
+          class="btn btn-success btn-sm connect-btn">
+          Connect with User
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Right Column: Chat Window -->
+  <div class="chat-panel">
+    <div class="chat-status">
+      <h5>Your Chat Status</h5>
+      <div class="status-message">{{statusMessage}}</div>
+    </div>
+
+    <div class="chat-messages">
+      <!-- Display chat messages -->
+      <div *ngFor="let message of messages" class="message-bubble">
+        <strong>{{ message.sender }}:</strong> {{ message.content }}
+      </div>
+    </div>
+
+    <!-- Message input and action buttons -->
+    <div class="message-input">
+      <input type="text" [(ngModel)]="message" placeholder="Type your message here..." class="form-control" />
+      <button (click)="sendMessage(message)" class="btn btn-primary send-btn">Send</button>
+      <button (click)="endChat()" class="btn btn-danger end-btn">End Chat</button>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<div class="chat-container">
+  <!-- Left Column: Connected Users & Chat Queue -->
+  <div class="users-panel">
+    <div class="team-section">
+      <h3>Meet Admin</h3>
+      <div class="team-member">
+        <img [src]="user.profilePictureUrl" alt="Team Member" class="img-fluid team-img">
+        <h5>{{ user.firstName }} {{ user.lastName }}</h5>
+        <p>Founder & CEO</p>
+        <p><a [routerLink]="['/user/instructors']" routerLinkActive="router-link-active" class="btn btn-info">View
+            Profile</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Chat Window -->
+  <div class="chat-panel">
+    <div class="chat-status">
+      <h5>{{!isAdmin?'Your messages to admin':'Messages from users'}}</h5>
+      <div class="status-message">Total messages from users {{messagesToAdmin.length}}</div>
+    </div>
+
+    <div class="chat-messages">
+      <!-- Display chat messages -->
+      <div *ngFor="let message of messagesToAdmin" class="message-bubble">
+        <strong>{{ message.sender }}:</strong> {{ message.content }}
+      </div>
+    </div>
+
+    <!-- Message input and action buttons -->
+    <div class="message-input" *ngIf="!isAdmin">
+      <input type="text" [(ngModel)]="messageToAdmin" placeholder="Type your message here... It will be sent to Admin"
+        class="form-control" />
+      <button (click)="sendMessageToAdmin(messageToAdmin)" class="btn btn-primary send-btn">Send</button>
+    </div>
+  </div>
+</div>
