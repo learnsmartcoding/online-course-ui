@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CourseService } from '../../../services/course.service';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-browse-course',
@@ -18,6 +19,26 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
   imports: [RouterModule, FormsModule, CommonModule, PopoverModule],
   templateUrl: './browse-course.component.html',
   styleUrls: ['./browse-course.component.css'], // Fix typo: styleUrl to styleUrls
+  animations: [
+    trigger('fade', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms ease-in', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        animate('300ms ease-out', style({ opacity: 0 }))
+      ])
+    ]),
+    trigger('bounce', [
+      transition(':enter', [
+        style({ transform: 'scale(0.5)', opacity: 0 }), // Start smaller and transparent
+        animate('300ms cubic-bezier(0.6, -0.28, 0.735, 0.045)', style({ transform: 'scale(1)', opacity: 1 })) // Bounce effect
+      ]),
+      transition(':leave', [
+        animate('200ms ease-out', style({ transform: 'scale(0.5)', opacity: 0 })) // Shrink when leaving
+      ])
+    ])
+  ]
 })
 export class BrowseCourseComponent implements OnInit, OnChanges {
   constructor(private courseService: CourseService) {}

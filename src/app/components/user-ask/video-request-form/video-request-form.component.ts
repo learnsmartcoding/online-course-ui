@@ -134,6 +134,14 @@ export class VideoRequestFormComponent implements OnInit {
     }
   }
 
+  canDeactivate(): boolean {
+    // Check if form is dirty and not submitted
+    if (this.requestForm.dirty) {
+      return confirm('You have unsaved changes! Do you really want to leave?');
+    }
+    return true;
+  }
+  
   getSubTopics(topic: string): string[] {
     const subTopicMap: { [key: string]: string[] } = {
       Angular: [
