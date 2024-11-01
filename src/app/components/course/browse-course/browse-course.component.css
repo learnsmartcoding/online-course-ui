@@ -38,11 +38,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column; /* Stack image on top and content below */
+  transition: transform 0.2s;
 }
 
 .course-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02); /* Slightly scale up on hover */
 }
 
 .course-image {

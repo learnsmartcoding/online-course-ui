@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.css or global styles */
+html, body, app-root, .route-container {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }

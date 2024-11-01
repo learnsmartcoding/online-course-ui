@@ -43,6 +43,7 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -217,7 +218,7 @@ export const appConfig: ApplicationConfig = {
       useClass: HttpRequestInterceptor,
       multi: true,
     },
-    provideNoopAnimations(),
+    provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     {
       provide: HTTP_INTERCEPTORS,

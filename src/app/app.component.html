@@ -2,7 +2,9 @@
 <div class="container">
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   @if (!isIframe) {
-  <router-outlet></router-outlet>
+    <div [@routeAnimations]="getRouteAnimationData(outlet)" >
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
   }
   <ngx-spinner></ngx-spinner>
 </div>

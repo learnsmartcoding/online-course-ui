@@ -22,7 +22,7 @@ import { ChatComponent } from './components/chat/chat/chat.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent ,  data: { animation: 'HomePage' }},
   { path: 'course/category', component: CategoryComponent },
   { path: 'course/browse', component: BrowseComponent },
   { path: 'course/category/:categoryId', component: CourseByCategoryComponent },
@@ -41,14 +41,35 @@ export const routes: Routes = [
     component: CourseComponent,
     canActivate: [canActivateAdminGuard],
   }, // New edit route
-  { path: 'about-us', component: AboutComponent },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'plans-and-price', component: PlansAndPricingComponent },
+  {
+    path: 'about-us',
+    data: { animation: 'AboutPage' },
+    loadComponent: () =>
+      import('./components/core/about/about.component').then(
+        (m) => m.AboutComponent
+      ),
+  },
+  {
+    path: 'contact-us',
+    loadComponent: () =>
+      import('./components/core/contact-us/contact-us.component').then(
+        (m) => m.ContactUsComponent
+      ),
+  },
+
+  {
+    path: 'plans-and-price',
+    loadComponent: () =>
+      import('./components/plans-and-pricing/plans-and-pricing.component').then(
+        (m) => m.PlansAndPricingComponent
+      ),
+  },
   { path: 'claims', component: ViewClaimsComponent },
   {
     path: 'technology/request/video',
     component: VideoRequestFormComponent,
-    canActivate: [canActivateGuard],
+    canActivate: [canActivateGuard],    
+    canDeactivate: [canDeactivateGuard],
   },
   {
     path: 'technology/requests',
@@ -70,7 +91,10 @@ export const routes: Routes = [
   { path: 'user/instructors', component: ViewUserProfileComponent },
   {
     path: 'user/chat',
-    component: ChatComponent,
+    loadComponent: () =>
+      import('./components/chat/chat/chat.component').then(
+        (m) => m.ChatComponent
+      ),
     canActivate: [canActivateGuard],
   },
   { path: '**', redirectTo: 'home' },
