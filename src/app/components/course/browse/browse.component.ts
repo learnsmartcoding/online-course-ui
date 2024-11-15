@@ -6,7 +6,7 @@ import { BrowseCourseComponent } from "../browse-course/browse-course.component"
   standalone: true,
   imports: [BrowseCourseComponent],
   templateUrl: './browse.component.html',
-  styleUrl: './browse.component.css'
+  styleUrl: './browse.component.css',
 })
 export class BrowseComponent {
 

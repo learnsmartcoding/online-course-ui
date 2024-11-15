@@ -1,5 +1,6 @@
 import {
   ApplicationConfig,
+  ErrorHandler,
   importProvidersFrom,
   provideZoneChangeDetection,
 } from '@angular/core';
@@ -16,7 +17,11 @@ import {
 } from '@angular/common/http';
 import { HttpRequestInterceptor } from './services/spinner-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule, provideNoopAnimations } from '@angular/platform-browser/animations';
+import {
+  BrowserAnimationsModule,
+  provideAnimations,
+  provideNoopAnimations,
+} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import {
@@ -44,7 +49,8 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { GlobalErrorInterceptor } from './components/core/error-handling/global-error-handling.interceptor';
+import { GlobalErrorHandler } from './components/core/error-handling/global-error-handling.service';
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
   console.log(message);
@@ -97,9 +103,10 @@ export function MSALInstanceFactory(): IPublicClientApplication {
 }
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
-  const protectedResourceMap = new Map<string, 
-  //Array<string>
-  Array<string | ProtectedResourceScopes> | null
+  const protectedResourceMap = new Map<
+    string,
+    //Array<string>
+    Array<string | ProtectedResourceScopes> | null
   >();
   //have this set if more microservice used or requires different scope for different controllers
   // protectedResourceMap.set(
@@ -114,67 +121,73 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     // },
     {
       httpMethod: 'POST',
-      scopes: [...environment.adb2cConfig.scopeUrls]
+      scopes: [...environment.adb2cConfig.scopeUrls],
     },
     {
       httpMethod: 'PUT',
-      scopes: [...environment.adb2cConfig.scopeUrls]
+      scopes: [...environment.adb2cConfig.scopeUrls],
     },
     {
       httpMethod: 'DELETE',
-      scopes: [...environment.adb2cConfig.scopeUrls]
+      scopes: [...environment.adb2cConfig.scopeUrls],
     },
     {
       httpMethod: 'PATCH',
-      scopes: [...environment.adb2cConfig.scopeUrls]
+      scopes: [...environment.adb2cConfig.scopeUrls],
     },
   ]);
 
-  protectedResourceMap.set(`${environment.adb2cConfig.apiEndpointUrl}/videorequest`, [
-    {
-      httpMethod: 'GET',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'POST',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'PUT',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'DELETE',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'PATCH',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-  ]);
+  protectedResourceMap.set(
+    `${environment.adb2cConfig.apiEndpointUrl}/videorequest`,
+    [
+      {
+        httpMethod: 'GET',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'POST',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'PUT',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'DELETE',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'PATCH',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+    ]
+  );
 
-  protectedResourceMap.set(`${environment.adb2cConfig.apiEndpointUrl}/enrollment`, [
-    {
-      httpMethod: 'GET',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'POST',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'PUT',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'DELETE',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-    {
-      httpMethod: 'PATCH',
-      scopes: [...environment.adb2cConfig.scopeUrls]
-    },
-  ]);
+  protectedResourceMap.set(
+    `${environment.adb2cConfig.apiEndpointUrl}/enrollment`,
+    [
+      {
+        httpMethod: 'GET',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'POST',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'PUT',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'DELETE',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+      {
+        httpMethod: 'PATCH',
+        scopes: [...environment.adb2cConfig.scopeUrls],
+      },
+    ]
+  );
 
   return {
     interactionType: InteractionType.Redirect,
@@ -218,7 +231,13 @@ export const appConfig: ApplicationConfig = {
       useClass: HttpRequestInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalErrorInterceptor,
+      multi: true,
+    },
     provideAnimationsAsync(),
+    //provideNoopAnimations(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
     {
       provide: HTTP_INTERCEPTORS,
@@ -237,6 +256,7 @@ export const appConfig: ApplicationConfig = {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory,
     },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     MsalService,
     MsalGuard,
     MsalBroadcastService,

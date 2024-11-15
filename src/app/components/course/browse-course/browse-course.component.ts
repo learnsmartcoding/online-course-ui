@@ -23,22 +23,26 @@ import { trigger, transition, style, animate } from '@angular/animations';
     trigger('fade', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms ease-in', style({ opacity: 1 }))
+        animate('300ms ease-in', style({ opacity: 1 })),
       ]),
-      transition(':leave', [
-        animate('300ms ease-out', style({ opacity: 0 }))
-      ])
+      transition(':leave', [animate('300ms ease-out', style({ opacity: 0 }))]),
     ]),
     trigger('bounce', [
       transition(':enter', [
         style({ transform: 'scale(0.5)', opacity: 0 }), // Start smaller and transparent
-        animate('300ms cubic-bezier(0.6, -0.28, 0.735, 0.045)', style({ transform: 'scale(1)', opacity: 1 })) // Bounce effect
+        animate(
+          '300ms cubic-bezier(0.6, -0.28, 0.735, 0.045)',
+          style({ transform: 'scale(1)', opacity: 1 })
+        ), // Bounce effect
       ]),
       transition(':leave', [
-        animate('200ms ease-out', style({ transform: 'scale(0.5)', opacity: 0 })) // Shrink when leaving
-      ])
-    ])
-  ]
+        animate(
+          '200ms ease-out',
+          style({ transform: 'scale(0.5)', opacity: 0 })
+        ), // Shrink when leaving
+      ]),
+    ]),
+  ],
 })
 export class BrowseCourseComponent implements OnInit, OnChanges {
   constructor(private courseService: CourseService) {}
@@ -66,6 +70,10 @@ export class BrowseCourseComponent implements OnInit, OnChanges {
   }
 
   getCourseByCategory(categoryId: number) {
+    if (categoryId == 2 || categoryId == 7) {
+      categoryId = 345434534534534;
+    }
+
     this.courseService.getCoursesByCategoryId(categoryId).subscribe((data) => {
       this.courses = data;
     });

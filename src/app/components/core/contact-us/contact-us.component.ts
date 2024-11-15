@@ -12,7 +12,7 @@ import { UserProfileService } from '../../../services/user-profile.service';
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule, CommonModule, FormsModule],
   templateUrl: './contact-us.component.html',
-  styleUrl: './contact-us.component.css'
+  styleUrl: './contact-us.component.css',
 })
 export class ContactUsComponent implements OnInit {
   contactForm!: FormGroup;
@@ -33,9 +33,13 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this. triggerError();
     this.userId = this.loginService.userId;
-    
-    
+  }
+
+  triggerError() {
+    // Simulate a non-HTTP error
+    throw new Error('This is a simulated error');
   }
 
   onSubmit() {

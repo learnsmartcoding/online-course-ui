@@ -141,7 +141,7 @@ export class VideoRequestFormComponent implements OnInit {
     }
     return true;
   }
-  
+
   getSubTopics(topic: string): string[] {
     const subTopicMap: { [key: string]: string[] } = {
       Angular: [

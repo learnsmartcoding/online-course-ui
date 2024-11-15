@@ -19,6 +19,8 @@ import { UpdateProfileComponent } from './components/users/update-profile/update
 import { ViewUserProfileComponent } from './components/users/view-user-profile/view-user-profile.component';
 import { BrowseComponent } from './components/course/browse/browse.component';
 import { ChatComponent } from './components/chat/chat/chat.component';
+import { canDeactivateGuard } from './components/core/guards/can-deactivate.guard';
+import { courseResolver } from './resolvers/course-detail.resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,18 +31,21 @@ export const routes: Routes = [
   {
     path: 'course/session-details/:courseId',
     component: CourseDetailsComponent,
+    resolve : {
+      courseDetails: courseResolver
+    }
   },
   {
     path: 'course/create',
     component: CourseComponent,
-   // canActivate: [canActivateAdminGuard],
+    //canActivate: [canActivateAdminGuard],
   },
   { path: 'course/list', component: CourseListComponent },
   {
     path: 'course/edit/:courseId',
     component: CourseComponent,
-    canActivate: [canActivateAdminGuard],
-  }, // New edit route
+    //canActivate: [canActivateAdminGuard],
+  },
   {
     path: 'about-us',
     data: { animation: 'AboutPage' },
@@ -68,13 +73,13 @@ export const routes: Routes = [
   {
     path: 'technology/request/video',
     component: VideoRequestFormComponent,
-    canActivate: [canActivateGuard],    
+    canActivate: [canActivateGuard],
     canDeactivate: [canDeactivateGuard],
   },
   {
     path: 'technology/requests',
     component: VideoRequestsComponent,
-    canActivate: [canActivateGuard],
+    //canActivate: [canActivateGuard],
   },
   {
     path: 'admin/technology/requests',
