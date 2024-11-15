@@ -16,7 +16,6 @@ export const canActivateAdminGuard: CanActivateFn = (
   const authService = inject(LoginService);
   const toastrService = inject(ToastrService);
 
-
   if (
     authService.loginDisplay &&
     authService.userRoles.filter((f) => f === 'Admin').length > 0

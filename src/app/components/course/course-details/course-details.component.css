@@ -1,94 +1,167 @@
-.course-details {
-    padding: 20px;
-    background-color: #f0f4f7;
+/* Global Styles */
+body {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Card Styles */
+.card {
+  border-radius: 10px;
+  border: none;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+h1, h2 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Title Section */
+.course-title .card-body {
+  background-color: #007bff;
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-title h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Meta Section */
+.meta-heading {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.course-meta {
+  background-color: #f8f9fa;
+}
+
+.course-meta p {
+  margin-bottom: 0.5rem;
+}
+
+/* Description Section */
+.description-heading {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+/* Sessions Section */
+.session-heading {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+/* Reviews Section */
+.review-heading {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.review-item {
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Modal */
+.modal-content {
+  border-radius: 10px;
+}
+
+.course-details{
+  margin-top: 20px;
+}
+
+.title-gradient {
+  background: linear-gradient(to right, #003366, #b3cde0); /* Dark to light gradient */
+  color: #fff; /* White text to contrast the dark background */
+  padding: 15px 20px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow for a 3D effect */
+}
+
+.title-gradient h1 {
+  margin: 0;
+  padding: 0;
+}
+
+
+.reviews .review-item {
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.review-heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.no-reviews {
+  padding: 15px;
+  font-size: 1.2rem;
+}
+
+.rating {
+  color: #ffcc00;
+}
+
+.card-body p {
+  margin-bottom: 0.5rem;
+}
+
+
+.team-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* Thumbnail Image */
+.thumbnail-img {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 720px; /* Limit height to YouTube thumbnail size */
+  object-fit: cover; /* Ensure the image covers the container */
+  border-radius: 10px;
+}
+
+/* Instructor Image - Circle Shape */
+.instructor-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%; /* Ensures it's always a circle */
+  border: 2px solid #007bff; /* Optional: Add a border to the image */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .instructor-img {
+    width: 120px;
+    height: 120px;
   }
-  
-  .course-header {
-    background: linear-gradient(to right, #007bff, #00c6ff);
-    color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .course-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .price-amount {
-    font-weight: bold;
-  }
-  
-  .course-type {
-    font-size: 1.1rem;
-    color: #e0e0e0;
-  }
-  
-  .course-info .card {
-    margin-bottom: 20px;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .info-section p {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .sessions .session-item {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  .sessions .session-item h3 {
-    font-size: 1.25rem;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004080;
-  }
-  
-  .reviews .review-item {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
-  .modal-content {
-    border-radius: 10px;
-  }
-  
-  .modal-header {
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .close {
-    font-size: 1.5rem;
-  }
-  
-  iframe {
-    border: none;
-    border-radius: 8px;
-  }
-  
-  
+}

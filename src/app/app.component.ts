@@ -8,6 +8,7 @@ import { AboutComponent } from './components/core/about/about.component';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 import { LoginService } from './services/login.service';
 import { trigger, transition, style, query, group, animate } from '@angular/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ import { trigger, transition, style, query, group, animate } from '@angular/anim
     HomeComponent,
     PlansAndPricingComponent,
     ContactUsComponent,
-    AboutComponent,
+    AboutComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

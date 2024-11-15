@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Submit Your Review</h5>
+  
+      <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <!-- Rating Select Dropdown -->
+        <div class="form-group">
+          <label for="rating">Rating:</label>
+          <select id="rating" class="form-control" formControlName="rating" [ngClass]="{'is-invalid': reviewForm['controls']['rating'].invalid && reviewForm['controls']['rating'].touched}">
+            <option [ngValue]="null" disabled>Select a rating</option>
+            <option *ngFor="let rate of [1, 2, 3, 4, 5]" [value]="rate">{{ rate }} Star{{ rate > 1 ? 's' : '' }}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="reviewForm['controls']['rating'].invalid && reviewForm['controls']['rating'].touched">
+            Please provide a rating.
+          </div>
+        </div>
+  
+        <!-- Comments Text Area -->
+        <div class="form-group mt-3">
+          <label for="comments">Comments:</label>
+          <textarea id="comments" class="form-control" formControlName="comments" rows="4" placeholder="Enter your comments about the course..."></textarea>
+          <div class="invalid-feedback" *ngIf="reviewForm['controls']['comments'].invalid && reviewForm['controls']['comments'].touched">
+            Comments must be at least 10 characters long.
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <div class="form-group mt-4">
+          <button type="submit" class="btn btn-primary" [disabled]="reviewForm.invalid || !isLoggedIn">
+           {{isLoggedIn?'Submit Review':'Sign In to submit a review'}} 
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

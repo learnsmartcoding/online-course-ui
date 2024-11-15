@@ -1,1 +1,137 @@
-<h1>You can build using existing examples! Good way to learn!</h1>
+<form [formGroup]="courseForm" (ngSubmit)="onSubmit()" class="course-form">
+    <!-- Course Details Card -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Course Details</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="title">Course Title</label>
+                    <input id="title" formControlName="title" class="form-control" type="text"
+                        placeholder="Enter course title">
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="description">Course Description</label>
+                    <textarea id="description" formControlName="description" class="form-control" type="text"
+                        placeholder="Enter course description"></textarea>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="price">Price ($)</label>
+                    <input id="price" formControlName="price" class="form-control" type="number"
+                        placeholder="Enter course price">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="courseType">Course Type</label>
+                    <select id="courseType" formControlName="courseType" class="form-control">
+                        <option value="Online">Online</option>
+                        <option value="Offline">Offline</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="seatsAvailable">Seats Available</label>
+                    <input id="seatsAvailable" formControlName="seatsAvailable" class="form-control" type="number"
+                        placeholder="Seats available (0-100)" min="0" max="100">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="duration">Duration (hours)</label>
+                    <input id="duration" formControlName="duration" class="form-control" type="number"
+                        placeholder="Enter course duration">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="instructorId">Instructor</label>
+                    <select id="instructorId" formControlName="instructorId" class="form-control">
+                        <!-- Bind categories dynamically -->
+                        <option value="" disabled selected>Select a option</option>
+                        <option *ngFor="let instructor of instructors" [value]="instructor.instructorId">
+                            {{ instructor.lastName }}, {{ instructor.firstName }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="categoryId">Category</label>
+                    <select id="categoryId" formControlName="categoryId" class="form-control">
+                        <!-- Bind categories dynamically -->
+                        <option value="" disabled selected>Select a option</option>
+                        <option *ngFor="let category of categories" [value]="category.categoryId">
+                            {{ category.categoryName }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="startDate">Start Date</label>
+                    <input id="startDate" formControlName="startDate" class="form-control" type="date">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="endDate">End Date</label>
+                    <input id="endDate" formControlName="endDate" class="form-control" type="date">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Details Card -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>Session Details</h3>
+        </div>
+        <div class="card-body">
+            <div formArrayName="sessionDetails">
+                <div *ngFor="let session of sessionDetails.controls; let i = index" [formGroupName]="i"
+                    class="session-detail">
+                    <div class="session-header d-flex justify-content-between">
+                        <button type="button" class="btn btn-link" (click)="toggleCollapse(i)">
+                            {{ sessionCollapsed[i] ? 'Expand' : 'Collapse' }} Session {{ i + 1 }}
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeSession(i)">
+                            Remove Session
+                        </button>
+                    </div>
+
+                    <div *ngIf="!sessionCollapsed[i]" class="session-fields">
+                        <div class="form-group">
+                            <label for="sessionTitle">Session Title</label>
+                            <input id="sessionTitle" formControlName="title" class="form-control" type="text"
+                                placeholder="Enter session title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sessionDescription">Session Description</label>
+                            <textarea id="sessionDescription" formControlName="description" type="text" class="form-control"
+                                placeholder="Enter session description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoUrl">Video URL</label>
+                            <input id="videoUrl" formControlName="videoUrl" class="form-control" type="text"
+                                placeholder="Enter video URL">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videoOrder">Video Order</label>
+                            <input id="videoOrder" formControlName="videoOrder" class="form-control" type="number"
+                                placeholder="Enter video order" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary mt-3" (click)="addSession()">Add Session</button>
+        </div>
+    </div>
+
+     <!-- Submit Button -->
+     <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg" [disabled]="courseForm.invalid">
+            {{ isEditMode ? 'Update Course' : 'Create Course' }}
+        </button>
+    </div>
+</form>
